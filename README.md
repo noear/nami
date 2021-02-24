@@ -1,4 +1,9 @@
 
+[![Maven Central](https://img.shields.io/maven-central/v/org.noear/nami.svg)](https://mvnrepository.com/search?q=g:org.noear%20AND%20nami)
+
+` QQ交流群：22200020
+
+
 # Nami
 
 Solon 伴生项目，为 http rpc 或 rest api 提供 client 支持；兼容 http、socket、web socket三种通道。
