@@ -153,7 +153,7 @@ public class Nami {
             }
 
             if (_config.getDebug()) {
-                PrintUtil.debug("Nami", "call: " + _url);
+                System.out.println("[Nami] call: " + _url);
             }
 
             _result = channel.call(_config, _method, _action, _url, headers, args, body);
