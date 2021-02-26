@@ -9,8 +9,6 @@ import org.noear.solon.core.util.PrintUtil;
  */
 public class InfoUtils {
     public static void print(Class<?> type, NamiClient anno) {
-        PrintUtil.green("[Nami] ");
-
         StringBuilder buf = new StringBuilder();
         buf.append("Bind the service ")
                 .append(type.getTypeName());
@@ -32,6 +30,6 @@ public class InfoUtils {
             buf.append(")");
         }
 
-        System.out.println(buf.toString());
+        PrintUtil.info("Nami", buf.toString());
     }
 }

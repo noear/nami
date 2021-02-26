@@ -3,6 +3,7 @@ package org.noear.nami;
 import org.noear.nami.annotation.NamiClient;
 import org.noear.nami.common.Constants;
 import org.noear.nami.common.Result;
+import org.noear.solon.core.util.PrintUtil;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -151,8 +152,8 @@ public class Nami {
                 body = args;
             }
 
-            if(_config.getDebug()) {
-                System.out.println("[Nami] call: " + _url);
+            if (_config.getDebug()) {
+                PrintUtil.info("Nami", "call: " + _url);
             }
 
             _result = channel.call(_config, _method, _action, _url, headers, args, body);
