@@ -15,7 +15,7 @@ import org.noear.solon.core.LoadBalance;
  * */
 public class NamiConfigurationSolon implements NamiConfiguration {
 
-    NamiConfiguration custom;
+    protected NamiConfiguration custom;
 
     public NamiConfigurationSolon() {
         //
