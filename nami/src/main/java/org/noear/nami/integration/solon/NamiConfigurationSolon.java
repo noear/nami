@@ -14,6 +14,18 @@ import org.noear.solon.core.LoadBalance;
  * @since 1.2
  * */
 public class NamiConfigurationSolon implements NamiConfiguration {
+
+    NamiConfiguration custom;
+
+    public NamiConfigurationSolon() {
+        //
+        //如果有定制的NamiConfiguration, 则用之
+        //
+        Aop.getAsyn(NamiConfiguration.class, (bw) -> {
+            custom = bw.raw();
+        });
+    }
+
     @Override
     public void config(NamiClient client, Nami.Builder builder) {
         if (Utils.isEmpty(client.name())) {
@@ -22,6 +34,11 @@ public class NamiConfigurationSolon implements NamiConfiguration {
 
         //设置调试模式
         builder.debug(Solon.cfg().isDebugMode() || Solon.cfg().isFilesMode());
+
+        //尝试自定义
+        if(custom != null){
+            custom.config(client, builder);
+        }
 
         //尝试从负载工厂获取
         if (Bridge.upstreamFactory() != null) {
