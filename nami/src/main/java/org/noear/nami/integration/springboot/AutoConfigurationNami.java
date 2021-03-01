@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -37,6 +38,12 @@ public class AutoConfigurationNami extends InstantiationAwareBeanPostProcessorAd
                 Class<?> beanClz = bean.getClass();
 
                 ReflectionUtils.doWithFields(beanClz, (field -> {
+                    if (Modifier.isFinal(field.getModifiers())
+                            || Modifier.isStatic(field.getModifiers())
+                            || Modifier.isInterface(field.getModifiers()) == false) {
+                        return;
+                    }
+
                     NamiClient client = field.getAnnotation(NamiClient.class);
 
                     if (client != null) {
