@@ -1,15 +1,17 @@
 package org.noear.nami.integration.solon;
 
 import org.noear.nami.Nami;
-import org.noear.nami.NamiAttachment;
 import org.noear.nami.NamiConfigurationDefault;
 import org.noear.nami.NamiException;
 import org.noear.nami.annotation.NamiClient;
+import org.noear.nami.annotation.NamiServer;
 import org.noear.nami.common.InfoUtils;
+import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.handle.HandlerLoader;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,6 +24,26 @@ public class XPluginImp implements Plugin {
         if (NamiConfigurationDefault.proxy == null) {
             NamiConfigurationDefault.proxy = new NamiConfigurationSolon();
         }
+
+        //注册 @NamiServer 构建器
+        Aop.context().beanBuilderAdd(NamiServer.class, (clz, bw, anno) -> {
+            //设置remoting状态
+            bw.remotingSet(true);
+
+            //注册到容器
+            Aop.context().beanRegister(bw, "", true);
+
+            //如果是remoting状态，转到 Solon 路由器
+            if (bw.remoting()) {
+                HandlerLoader bww = new HandlerLoader(bw, anno.mapping());
+                if (bww.mapping() != null) {
+                    //
+                    //如果没有xmapping，则不进行web注册
+                    //
+                    bww.load(Solon.global());
+                }
+            }
+        });
 
         Aop.context().beanInjectorAdd(NamiClient.class, (varH, anno) -> {
             if (varH.getType().isInterface() == false) {
