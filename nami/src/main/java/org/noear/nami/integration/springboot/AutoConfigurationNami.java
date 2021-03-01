@@ -25,23 +25,31 @@ public class AutoConfigurationNami extends InstantiationAwareBeanPostProcessorAd
     private Map<NamiClient, Object> cached = new ConcurrentHashMap<>();
 
     @Override
+    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+        //兼容1.0.x
+        return null;
+    }
+
+    @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        try {
-            Class<?> beanClz = bean.getClass();
+        if (beanName.startsWith("org.springframework") == false) {
+            try {
+                Class<?> beanClz = bean.getClass();
 
-            ReflectionUtils.doWithFields(beanClz, (field -> {
-                NamiClient client = field.getAnnotation(NamiClient.class);
+                ReflectionUtils.doWithFields(beanClz, (field -> {
+                    NamiClient client = field.getAnnotation(NamiClient.class);
 
-                if (client != null) {
-                    if (field.getType().isInterface()) {
+                    if (client != null) {
+                        if (field.getType().isInterface()) {
 
-                        field.setAccessible(true);
-                        field.set(bean, postAnno(client, field));
+                            field.setAccessible(true);
+                            field.set(bean, postAnno(client, field));
+                        }
                     }
-                }
-            }));
-        } catch (Throwable ex) {
-            ex.printStackTrace();
+                }));
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+            }
         }
 
         return bean;
