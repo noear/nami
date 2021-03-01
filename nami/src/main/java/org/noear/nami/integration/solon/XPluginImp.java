@@ -13,6 +13,10 @@ import org.noear.solon.core.Plugin;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @author noear
+ * @since 1.2
+ * */
 public class XPluginImp implements Plugin {
     private Map<NamiClient, Object> cached = new ConcurrentHashMap<>();
 

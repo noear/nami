@@ -1,7 +1,8 @@
 package org.noear.nami.common;
 
 /**
- * @author noear 2021/1/19 created
+ * @author noear
+ * @since 1.2
  */
 public class TextUtils {
     /**

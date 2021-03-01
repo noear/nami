@@ -4,6 +4,9 @@ import java.util.Map;
 
 /**
  * 过滤器
+ *
+ * @author noear
+ * @since 1.0
  * */
 public interface Filter {
     /**

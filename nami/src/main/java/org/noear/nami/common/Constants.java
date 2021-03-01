@@ -1,5 +1,9 @@
 package org.noear.nami.common;
 
+/**
+ * @author noear
+ * @since 1.0
+ * */
 public class Constants {
     public static final String CONTENT_TYPE_HESSIAN = "application/hessian";
     public static final String CONTENT_TYPE_PROTOBUF = "application/protobuf";

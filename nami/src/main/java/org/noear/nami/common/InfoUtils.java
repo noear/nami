@@ -5,8 +5,9 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.util.PrintUtil;
 
 /**
- * @author noear 2021/1/28 created
- */
+ * @author noear
+ * @since 1.2
+ * */
 public class InfoUtils {
     public static void print(Class<?> type, NamiClient anno) {
         StringBuilder buf = new StringBuilder();

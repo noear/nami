@@ -9,6 +9,9 @@ import java.util.Map;
 
 /**
  * 代理调用结果
+ *
+ * @author noear
+ * @since 1.2
  * */
 public class Result {
     /**

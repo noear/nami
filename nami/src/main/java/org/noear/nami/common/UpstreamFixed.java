@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.function.Supplier;
 
 /**
- * @author noear 2021/1/5 created
+ * @author noear
+ * @since 1.2
  */
 public class UpstreamFixed implements Supplier<String> {
     protected List<String> servers;

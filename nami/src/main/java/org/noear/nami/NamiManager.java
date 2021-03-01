@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Nami 扩展管理器
  *
- * @author noear 2021/1/1 created
+ * @author noear
  * @since 1.2
  */
 public class NamiManager {

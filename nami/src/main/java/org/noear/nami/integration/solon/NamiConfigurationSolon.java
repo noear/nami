@@ -9,6 +9,10 @@ import org.noear.solon.core.Aop;
 import org.noear.solon.core.Bridge;
 import org.noear.solon.core.LoadBalance;
 
+/**
+ * @author noear
+ * @since 1.2
+ * */
 public class NamiConfigurationSolon implements NamiConfiguration {
     @Override
     public void config(NamiClient client, Nami.Builder builder) {
