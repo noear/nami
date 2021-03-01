@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 /**
  * @author noear 2021/1/6 created
  */
-@Import(AutoConfigurationNami.class)
+@Import(NamiAutoConfiguration.class)
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
