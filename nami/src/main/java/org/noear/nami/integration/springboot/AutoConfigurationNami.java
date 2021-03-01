@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @EnableSolon
 @Configuration
-public class AutoConfiguration extends InstantiationAwareBeanPostProcessorAdapter {
+public class AutoConfigurationNami extends InstantiationAwareBeanPostProcessorAdapter {
     private Map<NamiClient, Object> cached = new ConcurrentHashMap<>();
 
     @Override
