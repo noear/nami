@@ -5,6 +5,10 @@ import org.noear.nami.NamiConfigurationDefault;
 
 import java.lang.annotation.*;
 
+/**
+ * @author noear
+ * @since 1.0
+ * */
 @Target({ElementType.TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

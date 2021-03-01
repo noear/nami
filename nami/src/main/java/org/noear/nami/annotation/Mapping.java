@@ -2,6 +2,10 @@ package org.noear.nami.annotation;
 
 import java.lang.annotation.*;
 
+/**
+ * @author noear
+ * @since 1.1
+ * */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
