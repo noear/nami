@@ -13,9 +13,9 @@ import org.noear.solon.core.LoadBalance;
  * @author noear
  * @since 1.2
  * */
-public class NamiConfigurationSolon implements NamiConfiguration {
+public final class NamiConfigurationSolon implements NamiConfiguration {
 
-    protected NamiConfiguration custom;
+    private NamiConfiguration custom;
 
     public NamiConfigurationSolon() {
         //
