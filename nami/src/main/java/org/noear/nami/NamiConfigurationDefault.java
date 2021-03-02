@@ -8,7 +8,7 @@ import org.noear.nami.annotation.NamiClient;
  * @author noear
  * @since 1.0
  * */
-public class NamiConfigurationDefault implements NamiConfiguration {
+public final class NamiConfigurationDefault implements NamiConfiguration {
     public static NamiConfiguration proxy;
 
     @Override
