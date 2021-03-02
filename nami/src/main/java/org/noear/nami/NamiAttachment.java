@@ -40,7 +40,7 @@ public final class NamiAttachment {
         return headers;
     }
 
-    private final static ThreadLocal<NamiAttachment> threadLocal = new ThreadLocal<>();
+    private final static ThreadLocal<NamiAttachment> threadLocal = new InheritableThreadLocal<>();
 
     /**
      * 移除当前线程的上下文
