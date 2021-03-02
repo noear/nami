@@ -39,8 +39,7 @@ public class AutoConfigurationNami extends InstantiationAwareBeanPostProcessorAd
 
                 ReflectionUtils.doWithFields(beanClz, (field -> {
                     if (Modifier.isFinal(field.getModifiers())
-                            || Modifier.isStatic(field.getModifiers())
-                            || Modifier.isInterface(field.getModifiers()) == false) {
+                            || Modifier.isStatic(field.getModifiers())) {
                         return;
                     }
 
