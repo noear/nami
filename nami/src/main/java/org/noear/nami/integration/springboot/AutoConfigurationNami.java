@@ -47,7 +47,6 @@ public class AutoConfigurationNami extends InstantiationAwareBeanPostProcessorAd
 
                     if (client != null) {
                         if (field.getType().isInterface()) {
-
                             field.setAccessible(true);
                             field.set(bean, postAnno(client, field));
                         }
