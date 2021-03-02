@@ -46,7 +46,7 @@ public class NamiHandler implements InvocationHandler {
             try {
                 config.setUrl(config.getUrl());
 
-                NamiConfiguration tmp = client.configuration().newInstance();
+                NamiConfiguration tmp = NamiManager.getConfigurator(client.configuration());
 
                 if (tmp != null) {
                     tmp.config(client, new Nami.Builder(config));

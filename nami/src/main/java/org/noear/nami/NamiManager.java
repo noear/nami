@@ -13,6 +13,7 @@ public class NamiManager {
     static final Map<String, Decoder> decoderMap = new HashMap<>();
     static final Map<String, Encoder> encoderMap = new HashMap<>();
     static final Map<String, NamiChannel> channelMap = new HashMap<>();
+    static final Map<Class<?>, NamiConfiguration> configuratorMap = new HashMap<>();
 
     /**
      * 登记解码器
@@ -67,4 +68,19 @@ public class NamiManager {
         return channelMap.get(scheme);
     }
 
+    public static NamiConfiguration getConfigurator(Class<? extends NamiConfiguration> clz) throws Exception {
+        NamiConfiguration tmp = configuratorMap.get(clz);
+
+        if (tmp == null) {
+            synchronized (clz) {
+                tmp = configuratorMap.get(clz);
+                if (tmp == null) {
+                    tmp = clz.newInstance();
+                    configuratorMap.put(clz, tmp);
+                }
+            }
+        }
+
+        return tmp;
+    }
 }
